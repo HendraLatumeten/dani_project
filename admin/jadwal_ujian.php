@@ -1,10 +1,18 @@
-<h2 class="text-center">Verifikasi Data Pendaftaran </h2>
+<h2 class="text-center">Jadwal Ujian </h2>
 
 <table id="tabel1" class="display table table-bordered" width="100%" >
 	<thead>
 		<tr>
 			<th  width="10px" title="urutkan berdasarkan nomor">NO</th>
-			<th width="10px" title="urutkan berdasarkan nama">Kode Pendaftaran</th>
+			<th width="10px" title="urutkan berdasarkan nama">ID_JADWAL</th>
+
+            <th width="10px" title="urutkan berdasarkan nama">ID_CALON SISWA</th>
+
+            <th width="10px" title="urutkan berdasarkan nama">TANGAL</th>
+
+            <th width="10px" title="urutkan berdasarkan nama">JAM</th>
+
+            <th width="10px" title="urutkan berdasarkan nama">RUANGAN</th>
 	
 			<th width="10px">Aksi</th>
 		</tr>
@@ -12,11 +20,15 @@
 	<tbody>
 
 		<?php $nomor=1; ?>
-		<?php $ambil=$koneksi->query("SELECT * FROM tb_pendaftaran  "); ?>
+		<?php $ambil=$koneksi->query("SELECT * FROM tb_jdwl_ujian  "); ?>
 		<?php while ($pecah=$ambil->fetch_assoc()) {?>
 		<tr>
 			<td><?php echo $nomor; ?></td>
-			<td><?php echo $pecah['no_pendaftaran']; ?></td>
+			<td><?php echo $pecah['id_jdwl_ujian']; ?></td>
+            <td><?php echo $pecah['id_calon_siswa']; ?></td>
+            <td><?php echo $pecah['tanggal']; ?></td>
+            <td><?php echo $pecah['jam']; ?></td>
+            <td><?php echo $pecah['ruangan']; ?></td>
 
 
 			
@@ -24,9 +36,10 @@
 
 			
 			<td>
-				<!-- 
-				<a href="index.php?halaman=detail_verifikasi&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin untuk Verifikasi data ini?')"><span class="btn btn-primary">Verifikasi</span></a> -->
-				<a href="index.php?halaman=detail_verifikasi&id=<?php echo $pecah['no_pendaftaran']; ?>"  ><span class="btn btn-primary">Verifikasi</span></a>
+				
+				<a href="index.php?halaman=detail_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >Detail</a>
+                <a href="index.php?halaman=edit_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >Edit</a>
+                <a href="index.php?halaman=hapus_data_pedaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin hapus data?')">Hapus</a>
 				
 			</td>
 		</tr>
