@@ -57,7 +57,10 @@ if(mysqli_connect_error()){
   </div>
   <div class="card-body">
     <p class="card-text"><b>SIMPAN</b> Kode Verifikasi anda: <b><?php echo $pecah['no_pendaftaran'] ?></b></p>
-    <p class="card-text"><b>PERHATIAN!</b> Kode Verifikasi Di Tunjukan Pada Pihak Administrasi Sekolah untuk Melengkapi data Calon Siswa dan Memproses Data Anda Sebegai Peserta Ujian. </p>
+    <p class="card-text"><b>PERHATIAN!</b> Kode Verifikasi Di Tunjukan Pada Pihak Administrasi Sekolah untuk Melengkapi data Calon Siswa dan Memproses Data Anda Sebegai Peserta Ujian.
+ </p>
+
+      <p class="card-text-red"><b>*NOTE:</b> Sertakan Ijazah/Surat Keterangan Lulus dan Foto 3X4 Latar Merah. </p>
    
   </div>
   <div class="card-footer text-muted">

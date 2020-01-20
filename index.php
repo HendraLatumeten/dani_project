@@ -156,7 +156,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
+          <!--   <div class="form-group">
                 <label class="col-sm-3 control-label">Foto Ijazah/Surat Keterangan Lulus </label>
                 <div class="col-sm-9">
                  <input type="file" name="foto" class="form-control" >
@@ -168,7 +168,7 @@
                 <div class="col-sm-9">
                     <input type="file" name="foto1"  class="form-control">
                 </div>
-            </div>
+            </div> -->
        
 
 
@@ -240,8 +240,8 @@ $kd= "KD".$hasil_1;
 
 
             $koneksi->query("INSERT INTO tb_detail_pendaftaran
-                  (no_pendaftaran,NISN,alamat,jenis_kelamin,TTL,asal_sekolah,almt_asl_sklh,nama_org_tua,nama_wali,agama,no_tlp,foto_ijazah,foto,tgl_daftar)
-                  VALUES('$kd','$nisn','$alamat','$jenis_kelamin','$ttl','$asal_sekolah','$alamat_asl_sekolah','$nama_orang_tua','$nama_wali','$agama','$no_tlp','$file','$foto','$date') ");
+                  (no_pendaftaran,NISN,alamat,jenis_kelamin,TTL,asal_sekolah,almt_asl_sklh,nama_org_tua,nama_wali,agama,no_tlp,foto_ijazah,foto,tgl_daftar,ket)
+                  VALUES('$kd','$nisn','$alamat','$jenis_kelamin','$ttl','$asal_sekolah','$alamat_asl_sekolah','$nama_orang_tua','$nama_wali','$agama','$no_tlp','$file','$foto','$date','0') ");
 
                 echo "<script>alert('pendaftaran sukses, silahkan login');</script>";
                 echo "<script>location='data_daftar.php?&kd=$kd'</script>";
