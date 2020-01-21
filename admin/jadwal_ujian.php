@@ -37,9 +37,9 @@
 			
 			<td>
 				
-				<a href="index.php?halaman=detail_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >Detail</a>
-                <a href="index.php?halaman=edit_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >Edit</a>
-                <a href="index.php?halaman=hapus_data_pedaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin hapus data?')">Hapus</a>
+				<a href="index.php?halaman=detail_data_penjadwalan&id=<?php echo $pecah['id_jdwl_ujian']; ?>" >Detail</a>
+                <a href="index.php?halaman=edit_data_penjadwalan&id=<?php echo $pecah['id_jdwl_ujian']; ?>" >Edit</a>
+                <a href="index.php?halaman=hapus_data_penjadwalan&id=<?php echo $pecah['id_jdwl_ujian']; ?>"   onclick="return confirm('yakin ingin hapus data?')">Hapus</a>
 				
 			</td>
 		</tr>
@@ -47,6 +47,8 @@
 		<?php } ?>
 	</tbody>
 </table>
+
+<a href="index.php?halaman=tambah_jadwal" title="Tambah Jadwal" class="btn btn-primary">Tambah Jadwal</a>
 
 <script type="text/javascript">
     $(document).ready(function(){

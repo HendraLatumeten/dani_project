@@ -206,6 +206,22 @@ if (!isset($_SESSION['admin'])) {
                         {
                             include 'detail_verifikasi.php';
                         }
+                        elseif ($_GET['halaman']=="detail_data_penjadwalan")
+                        {
+                            include 'detail_data_penjadwalan.php';
+                        }
+                         elseif ($_GET['halaman']=="edit_data_penjadwalan")
+                        {
+                            include 'edit_data_penjadwalan.php';
+                        }
+                         elseif ($_GET['halaman']=="hapus_data_penjadwalan")
+                        {
+                            include 'hapus_data_penjadwalan.php';
+                        }
+                        elseif ($_GET['halaman']=="tambah_jadwal")
+                        {
+                            include 'tambah_jadwal.php';
+                        }
                         elseif ($_GET['halaman']=="logout")
                         {
                             include 'logout.php';
