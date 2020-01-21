@@ -5,7 +5,7 @@
 
 	$koneksi->query("DELETE FROM tb_pendaftaran WHERE no_pendaftaran='$_GET[id]'");
 
-	echo "<script>alert('data penjual terhapus');</script>";
+	echo "<script>alert('data pendaftaran terhapus');</script>";
 	echo "<script>location='index.php?halaman=data_penjual'</script>";
 
 ?>

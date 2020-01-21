@@ -24,10 +24,13 @@
 
 			<td>
 				<?php
-				 if ($pecah['ket'] ==1 ){
+				 if ($pecah['foto_ijazah'] ==1 && $pecah['foto'] ==1 ){
 					 echo '<div class="badge badge-dark">';
 					 echo "Data Lengkap</div>"; 
-				}else if ($pecah['ket']==0 ){
+				}else if ($pecah['foto_ijazah'] ==1 || $pecah['foto'] ==1 ){
+					 echo '<div class="badge badge-primary">';
+					 echo "Data Belum Lengkap</div>"; 
+				}else if ($pecah['foto_ijazah'] ==0 && $pecah['foto'] ==0 ){
 					 echo '<div class="badge badge-primary">';
 					 echo "Harap Lengkapi Data</div>"; 
 				}
@@ -38,9 +41,9 @@
 
 			
 			<td>
-				<a href="index.php?halaman=detail_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >Detail</a>
-				<a href="index.php?halaman=edit_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >Edit</a>
-				<a href="index.php?halaman=hapus_data_pedaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin hapus data?')">Hapus</a>
+				<a href="index.php?halaman=detail_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >|Detail|</a>
+				<a href="index.php?halaman=edit_data_pendaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>" >Edit|</a>
+				<a href="index.php?halaman=hapus_data_pedaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin hapus data?')">Hapus|</a>
 				<!-- <a href="index.php?halaman=hapus_data_penjual&id=<?php echo $pecah['id_penjual']; ?>"   onclick="return confirm('yakin ingin hapus data?')"><span class="btn btn-primary">Terima</span></a> -->
 				
 			</td>

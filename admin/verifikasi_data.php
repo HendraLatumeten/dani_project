@@ -12,7 +12,7 @@
 	<tbody>
 
 		<?php $nomor=1; ?>
-		<?php $ambil=$koneksi->query("SELECT * FROM tb_pendaftaran  "); ?>
+		<?php $ambil=$koneksi->query("SELECT * FROM tb_pendaftaran WHERE status =1 "); ?>
 		<?php while ($pecah=$ambil->fetch_assoc()) {?>
 		<tr>
 			<td><?php echo $nomor; ?></td>
@@ -24,10 +24,10 @@
 
 			
 			<td>
-				<!-- 
-				<a href="index.php?halaman=detail_verifikasi&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin untuk Verifikasi data ini?')"><span class="btn btn-primary">Verifikasi</span></a> -->
-				<a href="index.php?halaman=detail_verifikasi&id=<?php echo $pecah['no_pendaftaran']; ?>"  ><span class="btn btn-primary">Verifikasi</span></a>
 				
+<!-- 				<a href="index.php?halaman=hapus_data_pedaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin untuk Verifikasi data ini?')"><span class="btn btn-primary">Verifikasi</span></a> -->
+				<!-- <a href="index.php?halaman=hapus_data_penjual&id=<?php echo $pecah['id_penjual']; ?>"   onclick="return confirm('yakin ingin hapus data?')"><span class="btn btn-primary">Terima</span></a> -->
+				<a href="index.php?halaman=detail_verifikasi&id=<?php echo $pecah['no_pendaftaran']; ?>"  ><span class="btn btn-primary">Verifikasi</span></a>
 			</td>
 		</tr>
 		<?php $nomor++; ?>
@@ -49,7 +49,7 @@
                 "lengthMenu":     "Menampilkan _MENU_ baris",
                 "loadingRecords": "memuat...",
                 "processing":     "Sedang di proses...",
-                "search":         "Cari Kode Pendaftaran:",
+                "search":         "Kode Pendaftaran:",
                 "zeroRecords":    "Arsip tidak ditemukan",
                 "paginate": {
                     "first":      "Pertama",

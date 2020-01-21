@@ -3,23 +3,43 @@
 	$pecah = $ambil->fetch_assoc();
 ?>
 
-<h2 class="text-center">Ubah Data Pendaftaran</h2>
-
+<h2 class="text-center">Verifikasi Data</h2>
+<table class="table">
+	<tr>
+			<td><b>USERNAME:<?php echo $pecah['nama'] ?></b></td>
+			
+			
+		</tr>
+		<tr>
+			<td><b>PASSWORD:<?php echo $pecah['NISN'] ?></b></td>
+			
+			
+		</tr>
+		
+	
+		
+	</table>
+	<hr>
 <form method="POST" enctype="multipart/form-data">
 	<div class="form-grup">
 		<tr>
-			<td>Username</td>
-			<td><input type="text" disabled class="form-control" name="nama_toko" value="<?php echo $pecah['nama'] ?>"></td>
+			
+			<td><input type="hidden" disabled class="form-control" name="nama_toko" value="<?php echo $pecah['nama'] ?>"></td>
 		</tr>
 		
 	</div>
 	<div>
-		<label>Alamat</label>
-		<textarea class="form-control" name="alamat" rows="10"><?php echo $pecah['a'] ?></textarea>
+		
+		<td><input type="hidden" disabled class="form-control" name="nama_toko" value="<?php echo $pecah['NISN'] ?>"></td>
+	
 	</div>
 	<div>
-		<label>Jadwal</label>
+		<label>RUANGAN</label>
 		<select class="form-control">
+			<option>--PILIH--</option>
+			<option>RUANGAN A</option>
+			<option>RUANGAN B</option>
+			<option>RUANGAN C</option>
 			
 		</select>
 	</div>
