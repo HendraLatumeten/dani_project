@@ -5,6 +5,7 @@
 		<tr>
 			<th  width="10px" title="urutkan berdasarkan nomor">NO</th>
 			<th width="10px" title="urutkan berdasarkan nama">Kode Pendaftaran</th>
+            <th width="10px" title="urutkan berdasarkan nama">Status</th>
 	
 			<th width="10px">Aksi</th>
 		</tr>
@@ -12,11 +13,22 @@
 	<tbody>
 
 		<?php $nomor=1; ?>
-		<?php $ambil=$koneksi->query("SELECT * FROM tb_pendaftaran WHERE status =1 "); ?>
+		<?php $ambil=$koneksi->query("SELECT * FROM tb_pendaftaran WHERE status  ORDER BY status = 1  "); ?>
 		<?php while ($pecah=$ambil->fetch_assoc()) {?>
 		<tr>
 			<td><?php echo $nomor; ?></td>
 			<td><?php echo $pecah['no_pendaftaran']; ?></td>
+            <td>
+                       <?php
+                 if ($pecah['status'] == 1 ){
+                     echo '<div class="badge badge-dark">';
+                     echo "Data Belum Terverifikasi</div>"; 
+                }elseif($pecah['status'] == 2 ){
+                     echo '<div class="badge badge-primary">';
+                     echo "Data Terverifikasi</div>"; 
+                }
+                ?>
+            </td>
 
 
 			
@@ -27,7 +39,20 @@
 				
 <!-- 				<a href="index.php?halaman=hapus_data_pedaftaran&id=<?php echo $pecah['no_pendaftaran']; ?>"   onclick="return confirm('yakin ingin untuk Verifikasi data ini?')"><span class="btn btn-primary">Verifikasi</span></a> -->
 				<!-- <a href="index.php?halaman=hapus_data_penjual&id=<?php echo $pecah['id_penjual']; ?>"   onclick="return confirm('yakin ingin hapus data?')"><span class="btn btn-primary">Terima</span></a> -->
-				<a href="index.php?halaman=detail_verifikasi&id=<?php echo $pecah['no_pendaftaran']; ?>"  ><span class="btn btn-primary">Verifikasi</span></a>
+			  	<a href="index.php?halaman=detail_verifikasi&id=<?php echo $pecah['no_pendaftaran']; ?>" type="hidden" ><span class='btn btn-primary'>Verifikasi</span></a> 
+             
+                <?php 
+                $no =  $pecah['no_pendaftaran'];
+                 ?>
+                <?php 
+                    if ($pecah['status'] == 1 ){
+                     // echo "<a href='index.php?halaman=detail_verifikasi&id= echo $pecah['no_pendaftaran'];' type='hidden' ><span class='btn btn-primary'>Verifikasi</span></a>";
+
+                }elseif($pecah['status'] == 2 ){
+            
+                }
+                 ?>
+              
 			</td>
 		</tr>
 		<?php $nomor++; ?>

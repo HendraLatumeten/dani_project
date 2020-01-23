@@ -232,6 +232,10 @@ if (!isset($_SESSION['admin'])) {
                         {
                             include 'tambah_jadwal.php';
                         }
+                         elseif ($_GET['halaman']=="lihat_data_verifikasi")
+                        {
+                            include 'lihat_data_verifikasi.php';
+                        }
                         elseif ($_GET['halaman']=="logout")
                         {
                             include 'logout.php';
