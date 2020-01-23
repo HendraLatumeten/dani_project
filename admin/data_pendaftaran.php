@@ -3,7 +3,7 @@
 <table id="tabel1" class="display table table-bordered" width="100%" >
 	<thead>
 		<tr>
-			<th  width="10px" title="urutkan berdasarkan nomor">NO</th>
+			<th  width="10px" title="urutkan berdasarkan nomor">No</th>
 			<th width="10px" title="urutkan berdasarkan nama">Kode Pendaftaran</th>
 			<th   width="10px" title="urutkan berdasarkan username">NISN</th>
 			<th   width="10px" title="urutkan berdasarkan username">Nama</th>

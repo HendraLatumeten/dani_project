@@ -41,8 +41,9 @@ $koneksi = new mysqli("localhost","root","","db_sekolahan");
     <div>
        
         <div class="row">
-                <br><br>
-                <h2 class="text-center">Login Admin SMP IT Permata Madani</h2>
+            <p align="center"><img  src='../images/logo.png' alt='' width='180px' ></p>
+            
+                <h2 class="text-center" align="text-center">Login Admin SMP IT Permata Madani</h2>
                 <br>
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">                  

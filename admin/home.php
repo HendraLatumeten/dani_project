@@ -4,7 +4,7 @@
 <table id="tabel1" class="display table table-bordered">
 	<thead>
 		<tr>
-			<th title="urutkan berdasarkan nomor">NO</th>
+			<th title="urutkan berdasarkan nomor">No</th>
 			<th title="urutkan berdasarkan nomor">Id Admin</th>
 			<th title="urutkan berdasarkan nomor">Nama</th>
 			<th title="urutkan berdasarkan nama">Email</th>

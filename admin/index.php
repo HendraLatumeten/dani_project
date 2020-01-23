@@ -109,6 +109,16 @@ if (!isset($_SESSION['admin'])) {
                         <p>Jadwal Ujian</p>
                     </a>
                 </li>
+                  <li <?php if (isset($_GET['halaman'])) {
+                    if ($_GET['halaman']=="jadwal_ujian") {
+                        echo "class='active'";
+                    }
+                } ?>>
+                    <a href="index.php?halaman=hasil_ujian">
+                        <i class="pe-7s-note"></i>
+                        <p>Hasil Ujian</p>
+                    </a>
+                </li>
                 <!-- <li <?php if (isset($_GET['halaman'])) {
                     if ($_GET['halaman']=="kategori") {
                         echo "class='active'";

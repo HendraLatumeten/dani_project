@@ -4,13 +4,13 @@
 	<thead>
 		<tr>
 			<th  width="10px" title="urutkan berdasarkan nomor">NO</th>
-			<th width="10px" title="urutkan berdasarkan nama">ID_JADWAL</th>
+			<th width="10px" title="urutkan berdasarkan nama">ID JADWAL</th>
 
-            <th width="10px" title="urutkan berdasarkan nama">ID_CALON SISWA</th>
+            <th width="10px" title="urutkan berdasarkan nama">ID CASIS</th>
 
-            <th width="10px" title="urutkan berdasarkan nama">TANGAL</th>
+            <th width="10px" title="urutkan berdasarkan nama">TANGGAL</th>
 
-            <th width="10px" title="urutkan berdasarkan nama">JAM</th>
+            <th width="10px" title="urutkan berdasarkan waktu">JAM</th>
 
             <th width="10px" title="urutkan berdasarkan nama">RUANGAN</th>
 	
@@ -29,12 +29,6 @@
             <td><?php echo $pecah['tanggal']; ?></td>
             <td><?php echo $pecah['jam']; ?></td>
             <td><?php echo $pecah['ruangan']; ?></td>
-
-
-			
-
-
-			
 			<td>
 				
 				<a href="index.php?halaman=detail_data_penjadwalan&id=<?php echo $pecah['id_jdwl_ujian']; ?>" >Detail</a>
