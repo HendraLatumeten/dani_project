@@ -6,7 +6,6 @@
 <?php
     include "../koneksi.php";
         //fungsi kode otomatis
-
         function kdauto($tabel, $inisial){
         $struktur   = mysql_query("SELECT * FROM tb_calon_siswa");
         $field      = mysql_field_name($struktur,0);
@@ -27,7 +26,7 @@
         }
         return $inisial.$tmp.$angka;
         }
-    $tampilPeg=mysql_query("SELECT * FROM tb_calon_siswa ORDER BY no_ujian");
+    $tampilPeg=mysql_query("SELECT * FROM tb_calon_siswa ORDER BY id_calon_siswa");
 
 $a= date("Y");
  ?>
@@ -36,7 +35,7 @@ $a= date("Y");
 <table class="table">
 		<tr>
 			
-			<td><b>NO UJIAN:<?php echo kdauto("tb_calon_siswa","",$a); ?></td>
+			<td><b>NO UJIAN:<?php echo kdauto("tb_calon_siswa",$a); ?></td>
 
 		</tr>
 		<tr>
@@ -57,34 +56,34 @@ $a= date("Y");
 <form method="POST" enctype="multipart/form-data">
 	<div class="form-grup">
 		<tr>
-			<td>NO UJIAN</td>
-			<td><input type="text"  class="form-control" name="no_ujian" value="<?php echo kdauto("NOJ",""); ?>"></td>
+			
+			<td><input type="hidden"  class="form-control" name="no_ujian" value="<?php echo kdauto("tb_calon_siswa",$a); ?>"></td>
 		</tr>
 		
 	</div>
 	<div class="form-grup">
 		<tr>
-			<td>NAMA</td>
-			<td><input type="text"  class="form-control" name="nama" value="<?php echo $pecah['nama'] ?>"></td>
+			
+			<td><input type="hidden"  class="form-control" name="nama" value="<?php echo $pecah['nama'] ?>"></td>
 		</tr>
 		
 	</div>
 
 	<div class="form-grup">
 		<tr>
-			<td>NO DAF</td>
-			<td><input type="text"  class="form-control" name="no_pendaftaran" value="<?php echo $pecah['no_pendaftaran'] ?>"></td>
+			
+			<td><input type="hidden"  class="form-control" name="no_pendaftaran" value="<?php echo $pecah['no_pendaftaran'] ?>"></td>
 		</tr>
 		
 	</div>
 	<div>
-		<td>NISN</td>
-		<td><input type="text"  class="form-control" name="nisn" value="<?php echo $pecah['NISN'] ?>"></td>
+		
+		<td><input type="hidden"  class="form-control" name="nisn" value="<?php echo $pecah['NISN'] ?>"></td>
 	
 
 	<div class="form-grup">
 		<label>Kategori</label>
-		<select class="form-control" name="jdwl_ujian" required="">
+		<select class="form-control" name="ruangan" required="">
 			<option value="" selected>- Pilih Ruangan -</option>
             <?php
 			$ambil = $koneksi->query("SELECT * FROM tb_jdwl_ujian ORDER BY ruangan ");
@@ -106,18 +105,16 @@ $a= date("Y");
 	if (isset($_POST['simpan'])) {
 		
 		$np = $_POST['no_pendaftaran'];
-   		$jdwl = $_POST['jdwl_ujian'];
+   		$ruangan = $_POST['ruangan'];
+   		$nj = $_POST['no_ujian'];
    		$nisn = $_POST['nisn'];
    		$nama = $_POST['nama'];
-   	
+   		$no_ujian = $_POST['no_ujian'];
 
-        $koneksi->query("INSERT INTO tb_calon_siswa SET id_calon_siswa='' ,no_pendaftaran='$np',id_jdwl_ujian='$jdwl',no_ujian='$_POST[no_ujian]',NISN='$nisn',nama='$nama',status='2'");
 
-		
+		$koneksi->query("INSERT tb_calon_siswa  (id_calon_siswa,id_pendaftaran,id_jdwl_ujian,no_ujian,NISN,nama,status) VALUES ('','$np','$ruangan','$nj','$nisn','$nama','$no_ujian','2')");
 			
 		$koneksi->query("UPDATE tb_pendaftaran SET status='2' WHERE no_pendaftaran='$np'");
-
-
 
 		echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=Verifikasi_data'>";
 		echo "<div class='alert alert-info'>Data Berhasil Di Ubah</div>";

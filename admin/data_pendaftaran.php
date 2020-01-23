@@ -14,7 +14,7 @@
 	<tbody>
 
 		<?php $nomor=1; ?>
-		<?php $ambil=$koneksi->query("SELECT * FROM tb_pendaftaran JOIN tb_detail_pendaftaran ON tb_pendaftaran.no_pendaftaran=tb_detail_pendaftaran.no_pendaftaran "); ?>
+		<?php $ambil=$koneksi->query("SELECT * FROM tb_pendaftaran JOIN tb_detail_pendaftaran ON tb_pendaftaran.no_pendaftaran=tb_detail_pendaftaran.no_pendaftaran ORDER BY foto_ijazah = null DESC"); ?>
 		<?php while ($pecah=$ambil->fetch_assoc()) {?>
 		<tr>
 			<td><?php echo $nomor; ?></td>
