@@ -28,7 +28,7 @@
    		$jam = $_POST['jam'];
    		$ruangan = $_POST['ruangan'];
 
-		$koneksi->query("INSERT tb_jdwl_ujian (id_jdwl_ujian,id_calon_siswa,tanggal
+		$koneksi->query("INSERT INTO tb_jdwl_ujian (id_jdwl_ujian,id_calon_siswa,tanggal
 			,jam,ruangan) VALUES ('','$tanggal','$jam','$ruangan')");
 			
 		echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=jadwal_ujian'>";

@@ -58,7 +58,7 @@ $a= date("Y");
 	<div class="form-grup">
 		<tr>
 			<td>NO UJIAN</td>
-			<td><input type="text"  class="form-control" name="no_ujian" value="<?php echo kdauto("NOJ",""); ?>"></td>
+			<td><input type="text"  class="form-control" name="no" value="<?php echo kdauto("tb_calon_siswa",""); ?>"></td>
 		</tr>
 		
 	</div>
@@ -100,7 +100,7 @@ $a= date("Y");
 	
 	<br>
 
-	<button class="btn btn-primary" type="submit" name="simpan">Simpan Perubahan</button>
+	<button class="btn btn-primary"  name="simpan">Simpan Perubahan</button>
 </form>
 <?php
 	if (isset($_POST['simpan'])) {
@@ -111,10 +111,8 @@ $a= date("Y");
    		$nama = $_POST['nama'];
    	
 
-        $koneksi->query("INSERT INTO tb_calon_siswa SET id_calon_siswa='' ,no_pendaftaran='$np',id_jdwl_ujian='$jdwl',no_ujian='$_POST[no_ujian]',NISN='$nisn',nama='$nama',status='2'");
+        $koneksi->query("INSERT INTO tb_calon_siswa SET id_calon_siswa='' ,no_pendaftaran='$np',id_jdwl_ujian='$jdwl',no_ujian='$_POST[no]',NISN='$nisn',nama='$nama',status='2'");
 
-		
-			
 		$koneksi->query("UPDATE tb_pendaftaran SET status='2' WHERE no_pendaftaran='$np'");
 
 
