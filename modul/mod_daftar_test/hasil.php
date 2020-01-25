@@ -36,7 +36,7 @@ else{
 		<a class='nav-link active' data-toggle='tab' href='#home' role='tab'>Pertanyaan</a>
 	  </li>
 	  <li class='nav-item'>
-		<a class='nav-link' data-toggle='tab' href='#profile' role='tab'>Jawaban</a>
+		<a class='nav-link' data-toggle='tab' href='#profile' role='tab'>Jawaban Anda</a>
 	  </li>
 	  </ul>
 	  <div class='tab-content'>";
@@ -86,14 +86,9 @@ else{
 			<ul><h4><input type=radio name='jawaban' value='C'> C. $r[pilihan_c]</h4></ul>
 			<ul><h4><input type=radio name='jawaban' value='D'> D. $r[pilihan_d]</h4></ul>";
 			}
-				
-            	echo "
+			 echo"
 			 </li>
-
 			 <td colspan=2><button type='submit' class='btn btn-info'><span class='glyphicon glyphicon-ok-circle' aria-hidden='true'></span> Simpan</button></form>";
-			 
-          
-
 			$no++;
 			
 			echo "</ul>";
@@ -139,18 +134,10 @@ else{
 			<ul><h4><input type=radio name='jawaban' value='B'> B. $r[pilihan_b]</h4></ul>
 			<ul><h4><input type=radio name='jawaban' value='C'> C. $r[pilihan_c]</h4></ul>
 			<ul><h4><input type=radio name='jawaban' value='D'> D. $r[pilihan_d]</h4></ul>";
-			
 			}
-	            	echo "
+			 echo"
 			 </li>
-
 			 <td colspan=2><button type='submit' class='btn btn-info'><span class='glyphicon glyphicon-ok-circle' aria-hidden='true'></span> Simpan</button></form>";
-			 
-            
-
-			 
-			
-			
 			$no++;
 			
 			echo "</ul>";
@@ -180,7 +167,7 @@ else{
 		 <tr>
           <th>No</th>
 		  <th>Pertanyaan</th>
-		  <th>Jawaban</th>
+		  <th>Jawaban Anda</th>
 		  </tr></thead><tbody>";
 			$hasil= mysqli_query($konek,"SELECT * FROM tbl_soal, jawaban WHERE jawaban.id_soal=tbl_soal.id_soal AND tbl_soal.id_kategori =  $kategori AND jawaban.id_user=$user ORDER BY tbl_soal.id_soal ASC");
 			$no=1; // Agar angka (penomoran) mengikuti paging
@@ -192,73 +179,15 @@ else{
 			  }
 			 echo"</tbody></table></div>";
 			}
-
 			
 				if($halaman > $jmlhalaman){
-				echo "<div class='row'>
-        <div class='col-md-10'>
-		<b>Test Sudah Selesai Dilaksanakan, Terima Kasih</b>";
-				 echo "<div class='tab-pane' id='profile' role='tabpanel'>
-		  <table class='table table-bordered'><thead class='thead-inverse'>
-		 <tr>
-          <th>No</th>
-		  <th>Pertanyaan</th>
-		  <th>Jawaban</th>
-		  </tr></thead><tbody>";
-
-
-$nama = $_SESSION[kategori];
-$id_kategori= '1';
-$jawab= mysqli_query($konek,"SELECT count(jawaban.jawaban) as jml FROM tbl_soal, jawaban WHERE jawaban.id_kategori =  $id_kategori AND jawaban.id_soal=tbl_soal.id_soal AND jawaban.jawaban=tbl_soal.jawaban_benar AND jawaban.id_user =$nama");
-		while($b = mysqli_fetch_array($jawab))
-		{
-		//Hitung Pertanyaan Yang Di Jawab
-		$terjawab=mysqli_query($konek,"SELECT * FROM jawaban WHERE id_kategori =  $id_kategori AND id_user =$nama");
-		$t = mysqli_num_rows($terjawab);
-		//Hitung Jumlah Jawaban Yang Salah
-		$salah = $t - $b['jml'];
-		$true =  $b['jml'];
-		$a =  $true * 100;
-		$Jumlah=$salah + $b['jml'];
-
-		
-		$c = $a / $Jumlah ;
-		
-		
-		//Tampilkan Jumlah Jawaban Benar
-		echo "<div class='form-group row'>
-			  <div class='col-sm-1'></div>
-			  <div class='col-sm-2'> <h2>Benar : $b[jml]</h2></div>";
-		//Tampilkan Jumlah PErtanyaan Yang Salah Menjawab		
-		echo "<div class='col-sm-2'> <h2>Salah: $salah</h2></div>";
-		}	
-
-
-
-		echo"</div>";
-		echo "<h3>Skor Anda: "."&nbsp".round($c, 1),"</h3>";
-
-		if ($c >= 60) {
-		
-		    echo '<div class="badge badge-primary">';
-		    echo "<h3>Lulus</h3>";  
-		    echo"</div>";
-		}elseif ($c <= 60) {
-			echo '<div class="badge badge-danger">';
-		    echo "<h3>Tidak Lulus</h3>";  
-		    echo"</div>";
-		    echo "<br>";
-		}
-	
-	
-
-
- 
+		echo "<div class='page-header'>
+        <h3>Selamat Mengerjakan <b>$_SESSION[namalengkap]</b></h3>
+		<p>Jawab Pertanyaan Berikut Dengan Memilih Jawaban Dari Soal Berikut</p>
+      	</div>";
 		} 
 		 echo"</div>";
-	 echo"</div>";
-    echo "<br>";
     }
-
+	
 ?>
 

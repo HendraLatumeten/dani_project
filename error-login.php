@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta name="description" content="Expand, contract, animate forms with jQuery wihtout leaving the page" />
         <meta name="keywords" content="expand, form, css3, jquery, animate, width, height, adapt, unobtrusive javascript"/>
-		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon"/>
+		
         <link rel="stylesheet" type="text/css" href="css/login.css" />
 
     </head>

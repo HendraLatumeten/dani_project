@@ -12,7 +12,7 @@ if ($_GET['module']=='home'){
    echo"<br><div class='row'>
    <div class='col-sm-3'>
      <p align=center><h3>Welcome To</h3></p> 
-     <p><h3>Simulasi Pra Try Out Berbasis Web Pada SD Santa Theresia Depok</h3></p>
+     <p><h3> Aplikasi Pendaftaran Dan Ujian Penerimaan Murid Baru Berbasis Web Pada Sekolah Smp Islam Terpadu Permata Madani</h3></p>
    </div>
    <div class='col-sm-7'>
     <p align=center>Hai <b>$_SESSION[namauser]</b>, selamat datang di halaman Administrator. 
@@ -21,7 +21,7 @@ if ($_GET['module']=='home'){
     <div class='col-sm-2'>
      <img src='images/icon-admin.jpg' alt='' width='100%' class='hidden-phone'>
    </div>
- </div>";	
+ </div>"; 
  echo"  <div class='page-header'></div>
  <div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
   <ol class='carousel-indicators'>
@@ -31,7 +31,7 @@ if ($_GET['module']=='home'){
   </ol>
   <div class='carousel-inner' role='listbox'>
     <div class='item active'>
-      <img src='images/slides/logo.png' width='600px' alt='First slide'>
+      <img src='images/slides/a.png' alt='First slide'>
     </div>
     <div class='item'>
       <img src='images/slides/slide4.jpg' alt='First slide'>
@@ -45,20 +45,20 @@ if ($_GET['module']=='home'){
     <span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
     <span class='sr-only'>Next</span>
   </a>
-</div>";	 
+</div>";   
 }
 elseif ($_SESSION['leveluser']=='guru'){
-	$jam=date("H:i:s");
-	$tgl=tgl_indo(date("Y m d")); 
-	echo"<br><div class='row'>
+  $jam=date("H:i:s");
+  $tgl=tgl_indo(date("Y m d")); 
+  echo"<br><div class='row'>
  <div class='col-sm-3'>
    <p align='center'><h1>Welcome</h1></p> 
-   <p><h3>Simulasi Pra Try Out Berbasis Web Pada SD Santa Theresia Depok</h3></p>
+   <p><h3> Aplikasi Pendaftaran Dan Ujian Penerimaan Murid Baru Berbasis Web Pada Sekolah Smp Islam Terpadu Permata Madani</h3></p>
  </div>
  <div class='col-sm-7'>
   Hai <b>$_SESSION[namalengkap]</b>, Selamat datang di halaman Administrator. 
   <br />Anda Berhak Mengelola Menu Sesuai Jabatan Anda sebagai <b>$_SESSION[jabatan]</b>
-  <br />Silahkan klik menu pilihan yang berada di bagian header untuk mengelola sistem Aplikasi Ini. <br /> <b>$hari_ini, $tgl, $jam </b>WIB			
+  <br />Silahkan klik menu pilihan yang berada di bagian header untuk mengelola sistem Aplikasi Ini. <br /> <b>$hari_ini, $tgl, $jam </b>WIB      
 
 </div>
 <div class='col-sm-2'>
@@ -74,7 +74,7 @@ echo"  <div class='page-header'></div>
   </ol>
   <div class='carousel-inner' role='listbox'>
     <div class='item active'>
-      <img src='images/slides/logo.png' width='600px' alt='First slide'>
+      <img src='images/slides/logo.png' alt='First slide'>
     </div>
     <div class='item'>
       <img src='images/slides/slide4.jpg' alt='First slide'>
@@ -88,51 +88,29 @@ echo"  <div class='page-header'></div>
     <span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
     <span class='sr-only'>Next</span>
   </a>
-</div>";	
+</div>";  
 
 }
 elseif ($_SESSION['leveluser']=='siswa'){
-	$jam=date("H:i:s");
-	$tgl=tgl_indo(date("Y m d")); 
+  $jam=date("H:i:s");
+  $tgl=tgl_indo(date("Y m d")); 
   echo"<br><div class='row'>
   <div class='col-sm-3'>
    <p align='center'><h1>Welcome To</h1></p> 
-   <p><h3>Simulasi Pra Try Out Berbasis Web Pada SD Santa Theresia Depok</h3></p>
+   <p><h3> Aplikasi Pendaftaran Dan Ujian Penerimaan Murid Baru Berbasis Web Pada Sekolah Smp Islam Terpadu Permata Madani.</h3></p>
  </div>
  <div class='col-sm-7'>
-  Hai <b>$_SESSION[namalengkap]</b>, Selamat datang di halaman Simulasi Pra Try Out Berbasis Web</b>
-  <br />Silahkan Pilih Test Yang Tersedia Untuk <b>$_SESSION[jabatan]</b>
-  <br />Silahkan klik menu pilihan yang berada di bagian header untuk mengelola sistem Aplikasi Ini. <br /> <b>$hari_ini</b>, <b>$tgl </b>, Pukul <b>$jam </b>WIB			
+  Hai <b>$_SESSION[namalengkap]</b>, Selamat datang di halaman Tes Penerimaan Murid Baru Berbasis Web Pada Sekolah Smp Islam Terpadu Permata Madani.</b>
+  <br />Silahkan Pilih Test Yang Tersedia Untuk <b>Calon Siswa</b>
+  <br />Dan menu pilihan yang berada di bagian header untuk mengelola sistem Aplikasi Ini. <br /> <b>$hari_ini</b>, <b>$tgl </b>, Pukul <b>$jam </b>WIB     
 </div>
 <div class='col-sm-2'>
  <img src='images/icon-siswa.png' alt='' width='100%' class='hidden-phone'>
 </div>
+</div>
 </div>";
-echo"  <div class='page-header'></div>
-<div id='carousel-example-generic' class='carousel slide' data-ride='carousel'>
-  <ol class='carousel-indicators'>
-    <li data-target='#carousel-example-generic' data-slide-to='0' class='active'></li>
-    <li data-target='#carousel-example-generic' data-slide-to='1'></li>
-    <li data-target='#carousel-example-generic' data-slide-to='2'></li>
-  </ol>
-  <div class='carousel-inner' role='listbox'>
-    <div class='item active'>
-      <img src='images/slides/logo.png' width='600px' alt='First slide'>
-    </div>
-    <div class='item'>
-      <img src='images/slides/slide4.jpg' alt='First slide'>
-    </div>
 
-  </div>
-  <a class='left carousel-control' href='#carousel-example-generic' role='button' data-slide='prev'>
-    <span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>
-    <span class='sr-only'>Previous</span>
-  </a>
-  <a class='right carousel-control' href='#carousel-example-generic' role='button' data-slide='next'>
-    <span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
-    <span class='sr-only'>Next</span>
-  </a>
-</div>";		
+  
 
 }
 }
@@ -222,10 +200,10 @@ else{
 </table>
 
 <script type="text/javascript">
-	$('#myHTMLTable').convertToFusionCharts({
-		swfPath: "Charts/",
-		type: "MSColumn3D",
-		data: "#myHTMLTable",
-		dataFormat: "HTMLTable"
-	});
+  $('#myHTMLTable').convertToFusionCharts({
+    swfPath: "Charts/",
+    type: "MSColumn3D",
+    data: "#myHTMLTable",
+    dataFormat: "HTMLTable"
+  });
 </script>

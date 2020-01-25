@@ -105,17 +105,17 @@ $a= date("Y");
 <?php
 	if (isset($_POST['simpan'])) {
 		
-		$np = $_POST['no_pendaftaran'];
+		$kd = $_POST['no_pendaftaran'];
    		$jdwl = $_POST['jdwl_ujian'];
    		$nisn = $_POST['nisn'];
    		$nama = $_POST['nama'];
    	
 
-        $koneksi->query("INSERT INTO tb_calon_siswa SET id_calon_siswa='' ,no_pendaftaran='$np',id_jdwl_ujian='$jdwl',no_ujian='$_POST[no_ujian]',NISN='$nisn',nama='$nama',status='2'");
+        $koneksi->query("INSERT INTO tb_users SET id_session='', username='$nama', NISN='$nisn',nama_lengkap='$nama', kd_pendaftaran='$kd',id_jdwl_ujian='$jdwl',no_ujian='$_POST[no_ujian]',status='siswa', id_user=''");
 
 		
 			
-		$koneksi->query("UPDATE tb_pendaftaran SET status='2' WHERE no_pendaftaran='$np'");
+		$koneksi->query("UPDATE tb_pendaftaran SET status='2' WHERE no_pendaftaran='$kd'");
 
 
 

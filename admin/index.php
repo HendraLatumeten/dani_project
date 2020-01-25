@@ -109,8 +109,19 @@ if (!isset($_SESSION['admin'])) {
                         <p>Jadwal Ujian</p>
                     </a>
                 </li>
+
+                   <li <?php if (isset($_GET['halaman'])) {
+                    if ($_GET['halaman']=="hasil_ujian") {
+                        echo "class='active'";
+                    }
+                } ?>>
+                    <a href="index.php?halaman=hasil_ujian">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Hasil Ujian</p>
+                    </a>
+                </li>
                 <!-- <li <?php if (isset($_GET['halaman'])) {
-                    if ($_GET['halaman']=="kategori") {
+                    if ($_GET['halaman']=="hasil_ujian") {
                         echo "class='active'";
                     }
                 } ?>>
@@ -226,6 +237,12 @@ if (!isset($_SESSION['admin'])) {
                         {
                             include 'lihat_data_verifikasi.php';
                         }
+
+                         elseif ($_GET['halaman']=="hasil_ujian")
+                        {
+                            include 'hasil_ujian.php';
+                        }
+
                         elseif ($_GET['halaman']=="logout")
                         {
                             include 'logout.php';

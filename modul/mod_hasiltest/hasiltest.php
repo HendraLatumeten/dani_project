@@ -1,6 +1,6 @@
   <?php
 session_start();
- if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])){
+ if (empty($_SESSION['username']) AND empty($_SESSION['nisn'])){
   echo "<link href='style.css' rel='stylesheet' type='text/css'>
  <center>Untuk mengakses modul, Anda harus login <br>";
   echo "<a href=../../index.php><b>LOGIN</b></a></center>";
@@ -14,7 +14,7 @@ switch($_GET['act']){
 		<p>Untuk <b>$_SESSION[jabatan]</p>
       	</div>";		
 		//Ambil Kategori Dari Id User 
-		$user = $_SESSION['kategori'];
+		$user = 1;
 		//Cari Kategori Pelajaran Dari User INi
 		$kategori=mysqli_query($konek,"SELECT * FROM kategori WHERE id_user = $user");
 		$k    = mysqli_fetch_array($kategori);
