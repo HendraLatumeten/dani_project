@@ -7,7 +7,7 @@
 </head>
 <body>
      <p align="center"><img  src='images/logo.png' alt='' width='150px' ></p>
-<h4 style="text-align: center;"><u>Data Pendaftaran Calon Siswa</u></h4>
+<h3 style="text-align: center;"><u>Data Pendaftaran Calon Siswa</u></h3>
 
 
 <?php
@@ -25,7 +25,7 @@ $sql = mysqli_query($connect, $query); // Eksekusi/Jalankan query dari variabel 
 $row = mysqli_num_rows($sql); // Ambil jumlah data dari hasil eksekusi $sql
 $data = mysqli_fetch_array($sql);
 $tanggal = "20-Februari-2020";
-        echo "<h4>NO PENDAFTARAN:</h4>".$data['no_pendaftaran']."<br>";
+        echo "<h4>KODE PENDAFTARAN:</h4>".$data['no_pendaftaran']."<br>";
         echo "<h4>NISN:</h4>".$data['NISN']."<br>";
         echo "<h4>NAMA:</h4>".$data['nama']."<br>";
         echo "<h4>Batas Waktu Verifikasi Data :</h4>".$tanggal."<br>";
