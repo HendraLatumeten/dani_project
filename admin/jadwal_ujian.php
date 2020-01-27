@@ -6,8 +6,6 @@
 			<th  width="10px" title="urutkan berdasarkan nomor">NO</th>
 			<th width="10px" title="urutkan berdasarkan nama">ID JADWAL</th>
 
-            <th width="10px" title="urutkan berdasarkan nama">ID CASIS</th>
-
             <th width="10px" title="urutkan berdasarkan nama">TANGGAL</th>
 
             <th width="10px" title="urutkan berdasarkan waktu">JAM</th>
@@ -25,7 +23,6 @@
 		<tr>
 			<td><?php echo $nomor; ?></td>
 			<td><?php echo $pecah['id_jdwl_ujian']; ?></td>
-            <td><?php echo $pecah['id_calon_siswa']; ?></td>
             <td><?php echo $pecah['tanggal']; ?></td>
             <td><?php echo $pecah['jam']; ?></td>
             <td><?php echo $pecah['ruangan']; ?></td>

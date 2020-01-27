@@ -109,23 +109,17 @@ if (!isset($_SESSION['admin'])) {
                         <p>Jadwal Ujian</p>
                     </a>
                 </li>
-<<<<<<< HEAD
+
 
                    <li <?php if (isset($_GET['halaman'])) {
-                    if ($_GET['halaman']=="hasil_ujian") {
-=======
-                  <li <?php if (isset($_GET['halaman'])) {
-                    if ($_GET['halaman']=="jadwal_ujian") {
->>>>>>> refs/remotes/origin/master
+                    if ($_GET['halaman']=="hasil_ujian") {    
                         echo "class='active'";
                     }
                 } ?>>
                     <a href="index.php?halaman=hasil_ujian">
-<<<<<<< HEAD
-                        <i class="pe-7s-news-paper"></i>
-=======
+
                         <i class="pe-7s-note"></i>
->>>>>>> refs/remotes/origin/master
+
                         <p>Hasil Ujian</p>
                     </a>
                 </li>

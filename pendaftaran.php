@@ -235,7 +235,7 @@ $kd= "KD".$hasil_1;
               $yangcocok = $ambil->num_rows;
               if ($yangcocok==1) {
                 echo "<script>alert('pendaftaran gagal, nisn sudah digunakan');</script>";
-                echo "<script>location='index.php'</script>";
+                echo "<script>location='pendaftaran.php'</script>";
               }else {
             
 

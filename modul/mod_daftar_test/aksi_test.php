@@ -61,5 +61,6 @@ elseif($module=='test' AND $act=='input'){
 								  )");
   echo "<script>window.location=('../../media.php?module=test&id_kategori=$kategori&halaman=$halaman')</script>";
 }
+
 }
 ?>

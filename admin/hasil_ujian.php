@@ -1,39 +1,83 @@
-<?php 	
-include '../config/koneksi.php';
-$user = '17';
-	
-$nama = '17';
-$id_kategori= '1';
-$jawab= mysqli_query($konek,"SELECT count(jawaban.jawaban) as jml FROM tbl_soal, jawaban WHERE jawaban.id_kategori =  $id_kategori AND jawaban.id_soal=tbl_soal.id_soal AND jawaban.jawaban=tbl_soal.jawaban_benar AND jawaban.id_user =$nama");
-		while($b = mysqli_fetch_array($jawab))
-		{
-		//Hitung Pertanyaan Yang Di Jawab
-		$terjawab=mysqli_query($konek,"SELECT * FROM jawaban WHERE id_kategori =  $id_kategori AND id_user =$nama");
-		$t = mysqli_num_rows($terjawab);
-		//Hitung Jumlah Jawaban Yang Salah
-		$salah = $t - $b['jml'];
-		$true =  $b['jml'];
-		$a =  $true * 100;
-		$Jumlah=$salah + $b['jml'];
+<h2 class="text-center">Data Hasil Ujian</h2>
 
-		
-		$c = $a / $Jumlah ;
-		
-		
-		//Tampilkan Jumlah Jawaban Benar
-		echo "<div class='form-group row'>
-			  <div class='col-sm-1'></div>
-			  <div class='col-sm-2'> <h2>Benar : $b[jml]</h2></div>";
-		//Tampilkan Jumlah PErtanyaan Yang Salah Menjawab		
-		echo "<div class='col-sm-2'> <h2>Salah: $salah</h2></div>";
-		}	
+<table id="tabel1" class="display table table-bordered" width="100%" >
+	<thead>
+		<tr>
+			<th  width="10px" title="urutkan berdasarkan nomor">No</th>
+			<th width="10px" title="urutkan berdasarkan nama">No Ujian</th>
+			<th   width="10px" title="urutkan berdasarkan username">Nama</th>
+			<th   width="10px" title="urutkan berdasarkan username">Ket</th>
+			<th width="10px">Aksi</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<?php $nomor=1; ?>
+		<?php $ambil=$koneksi->query("SELECT * FROM tb_hasil_ujian JOIN tb_users ON tb_hasil_ujian.id_user=tb_users.id_user ORDER BY id_hasil_ujian "); ?>
+
+	<?php while ($pecah=$ambil->fetch_assoc()) {?>
+		<tr>
+			<td><?php echo $nomor; ?></td>
+			<td><?php echo $pecah['no_ujian']; ?></td>
+			<td><?php echo $pecah['nama_lengkap']; ?></td>
+			<td>
+				<?php
+		if($pecah['skor'] >= 60) {
+		    echo '<div class="badge badge-danger">';
+		    echo "Lulus";  
+		    echo"</div>";
+		  }elseif ($pecah['skor'] <= 60) {
+			echo '<div class="badge badge-warning">';
+		    echo "Anda Diyatakan:Tidak Lulus";  
+		    echo"</div>";
+		 
+		   
+		}
+				?>
+				</td> 
+				
 
 
-		echo"</div>";
-		echo "Skor:".round($c, 1);
-	
-	
+			
+			<td>
+				<a href="index.php?halaman=detail_data_pendaftaran&id=<?php echo $pecah['id_hasil_ujian']; ?>" >|Detail|</a>
+				<!-- <a href="index.php?halaman=hapus_data_penjual&id=<?php echo $pecah['id_penjual']; ?>"   onclick="return confirm('yakin ingin hapus data?')"><span class="btn btn-primary">Terima</span></a> -->
+				
+			</td>
+		</tr>
+		<?php $nomor++; ?>
+		<?php } ?>
+	</tbody>
+</table>
 
+<script type="text/javascript">
+    $(document).ready(function(){
+     $("#tabel1").DataTable({
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "Tidak ada data yang tersedia di tabel",
+                "info":           "Menampilkan _START_ sampai _END_ dari _TOTAL_ baris",
+                "infoEmpty":      "Menampilkan 0 sampai 0 dari 0 baris",
+                "infoFiltered":   "(difilter dari _MAX_ total baris)",
+                "infoPostFix":    "",
+                "thousands":      ".",
+                "lengthMenu":     "Menampilkan _MENU_ baris",
+                "loadingRecords": "memuat...",
+                "processing":     "Sedang di proses...",
+                "search":         "Pencarian:",
+                "zeroRecords":    "Arsip tidak ditemukan",
+                "paginate": {
+                    "first":      "Pertama",
+                    "last":       "Terakhir",
+                    "next":       "lanjut",
+                    "previous":   "kembali"
+                },
+                "aria": {
+                    "sortAscending":  ": aktifkan urutan kolom ascending",
+                    "sortDescending": ": aktifkan urutan kolom descending"
+                }
+            }
+         });                       
 
-
- ?>
+    });
+</script>

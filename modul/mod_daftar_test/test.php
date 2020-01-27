@@ -90,7 +90,7 @@ else{
             	echo "
 			 </li>
 
-			 <td colspan=2><button type='submit' class='btn btn-info'><span class='glyphicon glyphicon-ok-circle' aria-hidden='true'></span> Simpan</button></form>";
+			 <td colspan=2><button type='submit' name='simpan' class='btn btn-info'><span class='glyphicon glyphicon-ok-circle' aria-hidden='true'></span> Simpan</button></form>";
 			 
           
 
@@ -144,7 +144,7 @@ else{
 	            	echo "
 			 </li>
 
-			 <td colspan=2><button type='submit' class='btn btn-info'><span class='glyphicon glyphicon-ok-circle' aria-hidden='true'></span> Simpan</button></form>";
+			 <td colspan=2><button type='submit' name='simpan' class='btn btn-info'><span class='glyphicon glyphicon-ok-circle' aria-hidden='true'></span> Simpan</button></form>";
 			 
             
 
@@ -171,6 +171,7 @@ else{
 			//Toombol Next
 			if($halaman < $jmlhalaman)
 			{
+
 				$next=$halaman+1;
 				echo " | <a HREF=$_SERVER[PHP_SELF]?module=test&id_kategori=$kategori&halaman=$next><button class='btn btn-success'><span class='glyphicon glyphicon-ok-circle' aria-hidden='true'></span> Next</button></a> ";
 			}
@@ -192,21 +193,19 @@ else{
 			  }
 			 echo"</tbody></table></div>";
 			}
+	
 
 			
 				if($halaman > $jmlhalaman){
+
+
 				echo "<div class='row'>
         <div class='col-md-10'>
-		<b>Test Sudah Selesai Dilaksanakan, Terima Kasih</b>";
-				 echo "<div class='tab-pane' id='profile' role='tabpanel'>
-		  <table class='table table-bordered'><thead class='thead-inverse'>
+		
 		 <tr>
-          <th>No</th>
-		  <th>Pertanyaan</th>
-		  <th>Jawaban</th>
-		  </tr></thead><tbody>";
+        ";
 
-
+echo "	 <form method='POST' enctype='multipart/form-data'  onchange='this.form.submit()' >";
 $nama = $_SESSION[kategori];
 $id_kategori= '1';
 $jawab= mysqli_query($konek,"SELECT count(jawaban.jawaban) as jml FROM tbl_soal, jawaban WHERE jawaban.id_kategori =  $id_kategori AND jawaban.id_soal=tbl_soal.id_soal AND jawaban.jawaban=tbl_soal.jawaban_benar AND jawaban.id_user =$nama");
@@ -221,44 +220,108 @@ $jawab= mysqli_query($konek,"SELECT count(jawaban.jawaban) as jml FROM tbl_soal,
 		$a =  $true * 100;
 		$Jumlah=$salah + $b['jml'];
 
-		
 		$c = $a / $Jumlah ;
-		
-		
-		//Tampilkan Jumlah Jawaban Benar
-		echo "<div class='form-group row'>
-			  <div class='col-sm-1'></div>
-			  <div class='col-sm-2'> <h2>Benar : $b[jml]</h2></div>";
-		//Tampilkan Jumlah PErtanyaan Yang Salah Menjawab		
-		echo "<div class='col-sm-2'> <h2>Salah: $salah</h2></div>";
 		}	
 
+		
+		
+		echo "<a type='submit' name='hasil' onchange='this.form.submit()'></a> ";
+echo "</form>";
+
+echo "<button type='submit' name='hasil' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Cek Hasil
+</button>";
 
 
 		echo"</div>";
-		echo "<h3>Skor Anda: "."&nbsp".round($c, 1),"</h3>";
-
-		if ($c >= 60) {
+		echo"</div>";
 		
-		    echo '<div class="badge badge-primary">';
-		    echo "<h3>Lulus</h3>";  
-		    echo"</div>";
-		}elseif ($c <= 60) {
-			echo '<div class="badge badge-danger">';
-		    echo "<h3>Tidak Lulus</h3>";  
-		    echo"</div>";
-		    echo "<br>";
 		}
 	
+  	
+   if (isset($_POST["hasil"])){
+ 	//Hitung Pertanyaan Yang Di Jawab
+   		$kategori= '1';
+ 	   $nama = $_SESSION[kategori];
+ 	   $jawab= mysqli_query($konek,"SELECT count(jawaban.jawaban) as jml FROM tbl_soal, jawaban WHERE jawaban.id_kategori =  $id_kategori AND jawaban.id_soal=tbl_soal.id_soal AND jawaban.jawaban=tbl_soal.jawaban_benar AND jawaban.id_user =$nama");
+		$b = mysqli_fetch_array($jawab);
+		//Hitung Pertanyaan Yang Di Jawab
+		$terjawab=mysqli_query($konek,"SELECT * FROM jawaban WHERE id_kategori =  $id_kategori AND id_user =$nama");
+		$data = mysqli_fetch_array($terjawab);
+		$t = mysqli_num_rows($terjawab);
+		//Hitung Jumlah Jawaban Yang Salah
+		$id_soal = $data['id_soal'];
+		$salah = $t - $b['jml'];
+		$true =  $b['jml'];
+		$a =  $true * 100;
+		$Jumlah=$salah + $b['jml'];
+
+		
+		$c = $a / $Jumlah ;
+		$skor=round($c, 1);
+
+$konek->query("INSERT INTO tb_hasil_ujian (id_hasil_ujian,id_user,id_soal,j_benar,j_salah,j_soal,skor) VALUES ('','$nama','$id_soal','$true','$salah','$Jumlah','$skor')");  
+   }
+
+		
+
 	
 
+?>
+<!-- Button trigger modal -->
 
- 
-		} 
-		 echo"</div>";
-	 echo"</div>";
-    echo "<br>";
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="exampleModalLabel"><b>Hasil Tes</b></h1>
+      </div>
+      <div class="modal-body">
+       <?php 
+    $jawab=mysqli_query($konek,"SELECT * FROM tb_hasil_ujian WHERE id_user =$nama");
+	$hs = mysqli_fetch_array($jawab);
+	$hl = $hs[skor];
+	$bnr = $hs[j_benar];
+	$slh = $hs[j_salah];
+
+	   	echo  "<h2>Hay"."&nbsp"."<b>".$_SESSION[namalengkap]."</b>..."."</h2>";
+	    echo "<div class='row'>";
+	    echo "<div class='container'";
+	    echo "<div> <h2>Jawaban Anda Benar : <b>$bnr</b></h2>";
+	    echo "<div> <h2>Dan Salah: <b>$slh</b></h2>";
+	    echo "<h2>Skor Anda: "."&nbsp"."<b>".round($hl, 1),"</b>"."</h2>";
+	    echo "</div>";
+
+	 
     }
 
-?>
-
+        echo "<div class='row'>";
+	    echo "<div class='container'>";
+        echo "<h2>Anda Dinyatakan:</h2>";
+    	 if($hl >= 60) {
+		    echo '<div class="badge badge-danger">';
+		   echo "<h3>Lulus</h3>";  
+		    echo"</div>";
+		}elseif ($hl <= 60) {
+			echo "<h3>Anda Dinyatakan:</h3>";
+			echo '<div class="badge badge-warning">';
+		    echo "<h3>Anda Diyatakan:Tidak Lulus</h3>";  
+		    echo"</div>";
+		 
+		   
+		}
+              echo"</div>";
+		      echo "</div>";
+        ?>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
